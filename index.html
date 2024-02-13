@@ -54,15 +54,6 @@
     .hidden {
         display: none;
     }
-
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px) {
-        body{
-            width: 15pc;
-            height: 5pc;
-            overflow: none;
-        }
-    }
 </style>
 
 <body>
@@ -98,11 +89,18 @@
         $(function () {
             $("#no_btn").on({
                 mouseover: function () {
-                    var randomLeft = Math.random() * 500;
-                    var randomTop = Math.random() * 500;
+                    // Define the width and height range
+                    var minWidth = 0;    // Replace with your minimum width
+                    var maxWidth = 100;  // Replace with your maximum width
+                    var minHeight = 0;   // Replace with your minimum height
+                    var maxHeight = 100; // Replace with your maximum height
+
+                    // Calculate random position within the specified range
+                    var randomLeft = Math.random() * (maxWidth - minWidth) + minWidth;
+                    var randomTop = Math.random() * (maxHeight - minHeight) + minHeight;
 
                     // Create an h2 element
-                    var loveYouElement = $("<h2>").text("Lov you");
+                    var loveYouElement = $("<h2>").text("Love you");
 
                     // Position the h2 element randomly
                     loveYouElement.css({
