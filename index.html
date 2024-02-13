@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Protest+Riot&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="/PATH_TO_STATIC_FAVICON/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Valentine Day</title>
+</head>
+
+<style>
+    body {
+        margin: auto;
+        margin-top: 10%;
+        width: 50%;
+        padding: 10px;
+        text-align: center;
+        font-family: "Kalam", cursive;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 25px;
+    }
+
+    button.btn1 {
+        background-color: green;
+        border: none;
+        border-radius: 3px;
+    }
+
+    button.btn1 a,
+    button.btn2 a {
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        font-family: "Kalam", cursive;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 35px;
+    }
+
+    button.btn2 {
+        background-color: rgb(191, 6, 6);
+        border: none;
+        border-radius: 3px;
+
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+<body>
+    <div>
+        <img id="valentineImage" src="lov.gif" alt="Valentine Image">
+        <h3 class="lov">Will you be my Valentine?</h3>
+        <h3 class="lov hidden">WOOOOOO!!! I love you pookie</h3>
+        <button class="btn1"><a href="https://2ly.link/1w0kw">Yes</a></button>
+        <button id="no_btn" class="btn2"><a href="#">No</a></button>
+
+    </div>
+
+
+    <script>
+        $(function () {
+            $("#no_btn").on({
+                mouseover: function () {
+                    var randomLeft = Math.random() * 200;
+                    var randomTop = Math.random() * 200;
+
+                    $(this).css({
+                        position: "relative",
+                        left: randomLeft + "px",
+                        top: randomTop + "px",
+                        transition: "left 0.3s, top 0.3s",  // Add transition effect
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#no_btn").on({
+                mouseover: function () {
+                    var randomLeft = Math.random() * 500;
+                    var randomTop = Math.random() * 500;
+
+                    // Create an h2 element
+                    var loveYouElement = $("<h2>").text("Lov you");
+
+                    // Position the h2 element randomly
+                    loveYouElement.css({
+                        position: "absolute",
+                        left: randomLeft + "px",
+                        top: randomTop + "px",
+                        transition: "left 0.3s, top 0.3s",  // Add transition effect
+                    });
+
+                    // Append the h2 element to the body
+                    $("body").append(loveYouElement);
+
+                    // Set a timeout to remove the h2 element after a short delay
+                    setTimeout(function () {
+                        loveYouElement.remove();
+                    }, 1000); // Adjust the duration as needed
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $(".btn1").on("click", function (event) {
+                event.preventDefault(); // Prevent the default action
+
+                // Hide all elements with class "lov"
+                $(".lov").addClass("hidden");
+
+                // Display only the "lov?" text
+                $(".lov:last").removeClass("hidden");
+            });
+
+            $(".btn1").on("click", function (event) {
+                // Update the image source
+                $("#valentineImage").attr("src", "lov2.gif"); // Replace with the path to your new image
+                $("#valentineImage").removeClass("hidden");
+                // Hide all buttons
+                $("button").hide();
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
