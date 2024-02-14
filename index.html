@@ -54,10 +54,27 @@
     .hidden {
         display: none;
     }
+
+    /* Media query for smaller screens, such as mobile devices */
+    @media only screen and (max-width: 600px) {
+        .Valentine {
+            padding: 10px;
+        }
+
+        .lov {
+            font-size: 1.2em;
+        }
+
+        .btn1,
+        .btn2 {
+            padding: 8px 16px;
+            font-size: 0.9em;
+        }
+    }
 </style>
 
 <body>
-    <div>
+    <div class="Valentine">
         <img id="valentineImage" src="lov.gif" alt="Valentine Image">
         <h3 class="lov">Will you be my Valentine?</h3>
         <h3 class="lov hidden">WOOOOOO!!! I love you pookie</h3>
@@ -69,81 +86,69 @@
 
     <script>
         $(function () {
+            // Mouseover and Click events for no_btn
             $("#no_btn").on({
                 mouseover: function () {
-                    var randomLeft = Math.random() * 200;
-                    var randomTop = Math.random() * 200;
-
-                    $(this).css({
-                        position: "relative",
-                        left: randomLeft + "px",
-                        top: randomTop + "px",
-                        transition: "left 0.3s, top 0.3s",  // Add transition effect
-                    });
+                    moveNoBtnToRandomPlace();
+                    moveAndShowLoveYouText();
+                },
+                click: function () {
+                    moveNoBtnToRandomPlace();
+                    moveAndShowLoveYouText();
                 }
             });
-        });
-    </script>
 
-    <script>
-        $(function () {
-            $("#no_btn").on({
-                mouseover: function () {
-                    // Define the width and height range
-                    var minWidth = 0;    // Replace with your minimum width
-                    var maxWidth = 100;  // Replace with your maximum width
-                    var minHeight = 0;   // Replace with your minimum height
-                    var maxHeight = 100; // Replace with your maximum height
-
-                    // Calculate random position within the specified range
-                    var randomLeft = Math.random() * (maxWidth - minWidth) + minWidth;
-                    var randomTop = Math.random() * (maxHeight - minHeight) + minHeight;
-
-                    // Create an h2 element
-                    var loveYouElement = $("<h2>").text("Love you");
-
-                    // Position the h2 element randomly
-                    loveYouElement.css({
-                        position: "absolute",
-                        left: randomLeft + "px",
-                        top: randomTop + "px",
-                        transition: "left 0.3s, top 0.3s",  // Add transition effect
-                    });
-
-                    // Append the h2 element to the body
-                    $("body").append(loveYouElement);
-
-                    // Set a timeout to remove the h2 element after a short delay
-                    setTimeout(function () {
-                        loveYouElement.remove();
-                    }, 1000); // Adjust the duration as needed
-                }
-            });
-        });
-    </script>
-
-    <script>
-        $(function () {
+            // Click event for btn1
             $(".btn1").on("click", function (event) {
-                event.preventDefault(); // Prevent the default action
+                event.preventDefault();
 
-                // Hide all elements with class "lov"
                 $(".lov").addClass("hidden");
-
-                // Display only the "lov?" text
                 $(".lov:last").removeClass("hidden");
-            });
 
-            $(".btn1").on("click", function (event) {
-                // Update the image source
-                $("#valentineImage").attr("src", "lov2.gif"); // Replace with the path to your new image
+                $("#valentineImage").attr("src", "lov2.gif");
                 $("#valentineImage").removeClass("hidden");
-                // Hide all buttons
+
                 $("button").hide();
             });
 
+            function moveNoBtnToRandomPlace() {
+                var randomLeft = Math.random() * 200;
+                var randomTop = Math.random() * 200;
+
+                $("#no_btn").css({
+                    position: "relative",
+                    left: randomLeft + "px",
+                    top: randomTop + "px",
+                    transition: "left 0.3s, top 0.3s",
+                });
+            }
+
+            function moveAndShowLoveYouText() {
+                var randomLeft = Math.random() * 200;
+                var randomTop = Math.random() * 200;
+
+                // Create an h2 element
+                var loveYouElement = $("<h2>").text("Love you");
+
+                // Position the h2 element randomly
+                loveYouElement.css({
+                    position: "absolute",
+                    left: randomLeft + "px",
+                    top: randomTop + "px",
+                    transition: "left 0.3s, top 0.3s",
+                });
+
+                // Append the h2 element to the body
+                $("body").append(loveYouElement);
+
+                // Set a timeout to remove the h2 element after 2 seconds
+                setTimeout(function () {
+                    loveYouElement.remove();
+                }, 1000);
+            }
         });
     </script>
+
 
 </body>
 
